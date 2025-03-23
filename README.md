@@ -20,7 +20,9 @@ A **Streamlit web app** that generates captions for images using the **BLIP mode
 ```bash
 pip install -r requirements.txt
 ```
-2️⃣ Run the Streamlit app:
+2️⃣ Set up your Hugging Face API key.
+
+3️⃣ Run the Streamlit app:
 ```bash
 streamlit run main.py
 ```
