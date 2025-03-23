@@ -43,12 +43,11 @@ def generate_stylized_caption(caption, style):
         response = requests.post(url, headers=headers, json=payload)
         response.raise_for_status()
         response_json = response.json()
-        #return response_json[0]["generated_text"].strip() if isinstance(response_json, list) else "❌ Unexpected response format."
         generated_text = response_json[0]["generated_text"].strip()
         return generated_text.split(":")[-1].strip()  # Extract only the generated part
 
     except requests.exceptions.RequestException as e:
-        return f"❌ API request failed - {e}"
+        return f" API request failed - {e}"
 
 st.title("🖼️ AI-Powered Image Captioning")
 
@@ -57,7 +56,6 @@ style = st.selectbox("Choose a caption style", ["humorous", "poetic", "descripti
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    #st.image(image, caption="Uploaded Image", use_column_width=True)
     st.image(image, caption="Uploaded Image", use_container_width=True)
     
     processor, model = load_model()
